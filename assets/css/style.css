@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'fd-souvenir';
+  src: url('/assets/fonts/ITC-Souvenir-Light-1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  transition: transform 5s ease-out;
+  transform-origin: center;
+}
+
+.container div {
+  height: 50%;
+  width: 140px;
+  position: absolute;
+  clip-path: polygon(100% 0, 50% 100%, 0 0);
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  left: 95px;
+  
+}
+
+.container .one {
+  left: 50%;
+  border: solid black 1px;
+}
+.container .two {
+  transform: rotate(45deg);
+}
+.container .three {
+  transform: rotate(90deg);
+}
+.container .four {
+  transform: rotate(135deg);
+}
+.container .five {
+  transform: rotate(180deg);
+}
+.container .six {
+  transform: rotate(225deg);
+}
+.container .seven {
+  transform: rotate(270deg);
+}
+.container .eight {
+  transform: rotate(315deg);
+}
+
+#spin {
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-transform: uppercase;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+#floating-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Floating icons and messages with 3D perspective animation */
+.floating-icon-1,
+.floating-icon-2,
+.floating-icon-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* Start small at the center */
+  opacity: 0; /* Hidden initially */
+  transform-origin: center center; /* Ensures proper scaling and rotation */
+  pointer-events: none;
+}
+
+
+.floating-message-1,
+.floating-message-2,
+.floating-message-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* Start small at the center */
+  opacity: 0; /* Hidden initially */
+  transform-origin: center center; /* Ensures proper scaling and rotation */
+  pointer-events: none;
+  
+  /* New additions for stability */
+  width: 150px; /* Adjust to your preferred width */
+  text-align: center; /* Center-align text */
+  white-space: normal; /* Allow text to wrap */
+  overflow: hidden; /* Prevent content overflow */
+
+  font-size: 16px; /* Lock font size */
+  line-height: 1.2; /* Ensure consistent spacing */
+}
+
+
+/* 3D Perspective */
+.wheel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px; /* Enables 3D perspective effect */
+  overflow: hidden; /* Prevents elements from spilling outside */
+}
