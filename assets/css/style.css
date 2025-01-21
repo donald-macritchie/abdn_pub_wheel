@@ -7,9 +7,12 @@
 @font-face {
   font-family: 'fd-souvenir';
   src: url('/assets/fonts/ITC-Souvenir-Light-1.ttf') format('truetype');
+  src: url('/assets/fonts/itc_souvenir_light-webfont.woff') format('woff');
+  src: url('/assets/fonts/itc_souvenir_light-webfont.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
+
 
 .container {
   transition: transform 5s ease-out;
