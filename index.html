@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Css Link -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind config -->
+    <script src="./assets/js/tailwind.config.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Flowbite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/7771b7a700.js" crossorigin="anonymous"></script>
+
+
+    <!-- Custom scripts -->
+    <script src="./assets/js/pubs.js" defer></script>
+    <script src="./assets/js/script.js" defer></script>
+</head>
+
+<body class="h-full bg-gradient-to-b from-fd-yellow to-fd-light">
+
+
+
+
+    <!-- Header -->
+    <header class="max-w-[700px] mx-auto px-8 mt-16 text-center">
+        <h4 class="text-md font-fd-souvenir text-xs text-left">Fine Day Studio Presents...</h4>
+        <h4 class="text-md font-fd-souvenir mb-10 text-left"></h4>
+        <h3 class="text-6xl font-fd-souvenir mb-20">Aberdeen Pub Generator</h3>
+    </header>
+
+    <!-- wheel -->
+
+    <section class="wheel-section relative flex items-center justify-center my-12">
+        <!-- Wheel Container for 3D Perspective -->
+        <div class="wheel-container relative w-full h-full">
+            <div
+                class="container w-[340px] h-[340px] bg-fd-yellow rounded-full border-solid border-4 border-fd-dark relative overflow-hidden font-fd-souvenir">
+                <button id="spin" class="bg-fd-light text-black text-xl border-4 border-fd-dark">Spin</button>
+                <div class="one bg-gradient-to-b from-fd-discover-orange to-fd-bg-orange"></div>
+                <div class="two bg-gradient-to-b from-fd-concieve-pink to-fd-bg-pink"></div>
+                <div class="three bg-gradient-to-b from-fd-create-blue to-fd-bg-blue"></div>
+                <div class="four bg-gradient-to-b from-fd-deliver-purple to-fd-bg-purple"></div>
+                <div class="five bg-gradient-to-b from-fd-discover-orange to-fd-bg-orange"></div>
+                <div class="six bg-gradient-to-b from-fd-concieve-pink to-fd-bg-pink"></div>
+                <div class="seven bg-gradient-to-b from-fd-create-blue to-fd-bg-blue"></div>
+                <div class="eight bg-gradient-to-b from-fd-deliver-purple to-fd-bg-purple"></div>
+            </div>
+            <div id="floating-icons" class="absolute top-0 left-0 w-full h-full pointer-events-none hidden">
+                <img src="./assets/images/beer.png" alt="Icon 1" class="floating-icon-1 absolute w-8 h-8">
+                <p class="floating-message-1 absolute w-[100px] h-[80px] font-fd-souvenir">Cheeky Pint?</p>
+                <img src="./assets/images/wine-glass.png" alt="Icon 2" class="floating-icon-2 absolute w-8 h-8">
+                <p class="floating-message-2 absolute w-[100px] h-[80px] font-fd-souvenir">Time for a tipple?</p>
+                <img src="./assets/images/martini.png" alt="Icon 3" class="floating-icon-3 absolute w-8 h-8">
+                <p class="floating-message-3 absolute w-[100px] h-[100px] font-fd-souvenir">Fancy a Bevvy?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Modal -->
+    <div id="results-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 hidden">
+        <div
+            class="results-container bg-fd-yellow rounded-lg max-w-[600px] w-[90%] md:w-[40%] max-h-[300px] h-auto shadow-2xl text-center relative">
+            <!-- Close Button -->
+            <button id="close-modal" class="absolute top-2 right-3 text-fd-dark text-2xl font-bold">&times;</button>
+
+            <!-- Results Content -->
+            <h1 class="text-fd-dark font-fd-souvenir text-3xl md:text-5xl pt-4 pb-2">Results</h1>
+            <div class="bg-fd-bg-orange py-2 px-4 rounded-lg mx-4 mb-4">
+                <p class="text-fd-dark font-fd-karla text-lg md:text-xl">
+                    Name: <span id="result-name" class="text-fd-discover-orange font-fd-souvenir font-bold"></span>
+                </p>
+                <p class="text-fd-dark font-fd-karla text-lg md:text-xl">
+                    Address: <span id="result-address" class="text-fd-concieve-pink font-fd-souvenir font-bold"></span>
+                </p>
+                <p class="text-fd-dark font-fd-karla text-lg md:text-xl">
+                    Area: <span id="result-area" class="text-fd-create-blue font-fd-souvenir font-bold"></span>
+                </p>
+            </div>
+
+            <!-- Icons -->
+            <div class="jumping-icon bottom-left-icon absolute bottom-2 left-2">
+                <img src="./assets/images/beer.png" alt="results-icon" class="max-w-12 max-h-12">
+            </div>
+            <div class="jumping-icon bottom-right-icon absolute bottom-2 right-2">
+                <img src="./assets/images/beer.png" alt="results-icon" class="max-w-12 max-h-12">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Saved Results Modal -->
+
+
+    <div id="saved-results-container" class="mt-[60px] md:mt-[150px]">
+        <h2 class="flex flex-col items-center font-fd-souvenir text-xl md:text-4xl my-4">Previous Results</h2>
+        <div id="saved-results-placeholder" class="text-gray-500 font-fd-karla text-lg text-center">
+            No results yet. Spin to generate!
+        </div>
+        <div id="saved-results-list" class="mt-2">
+            <!-- Accordion items will be dynamically added here -->
+        </div>
+    </div>
+
+
+    <div id="accordion-collapse" data-accordion="collapse" class="mb-10">
+        <!-- The dynamic content will go here -->
+    </div>
+
+
+
+    <!-- General info section -->
+    <section class="pt-10 w-full h-full">
+        <div class="max-w-[700px] mx-auto px-8 mt-16 text-center">
+            <div class="flex flex-row items-center gap-10 my-10">
+                <p class="text-lg text-left font-fd-karla mb-6">At Fine Day, we believe in sparking creativity and
+                    crafting memorable experiences. But as the workday wraps up, it’s time to unwind and indulge what
+                    makes life fun.</p>
+                <img src="./assets/images/beer.png" alt="Icon 1" class="w-20 h-20">
+            </div>
+            <div class="flex flex-row items-center gap-10 my-10">
+                <img src="./assets/images/martini.png" alt="Icon 3" class="w-20 h-20">
+                <p class="text-lg text-right font-fd-karla mb-8">That’s why we created the <strong
+                        class="font-bold">Aberdeen Pub Generator</strong> — a simple spin, a new place to explore, and a
+                    chance to enjoy a pint in a pub you might not have thought of before. It’s not just about having a
+                    drink; it’s about stepping out of the routine and embracing the unexpected.</p>
+            </div>
+            <div class="flex flex-row items-center gap-10 my-10">
+                <p class="text-lg text-left font-fd-karla mb-8"><strong>Rediscover Aberdeen</strong> — explore the
+                    hidden gems, the cozy corners, and the vibrant places where stories are waiting to be made.</p>
+                <img src="./assets/images/wine-glass.png" alt="Icon 2" class="w-20 h-20">
+            </div>
+        </div>
+
+        <hr class="border-t">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items centre px-6">
+            <div class="my-10">
+                <div class="flex flex-col items-center p-4">
+                    <a href="https://fineday.studio/" target="_blank" rel="noreferrer">
+                        <img src="./assets/images/fds_logo.png" alt="Image of Fine Day Studio Logo"
+                            class="w-36 h-36 rounded-xl border-fd-dark border-solid border-2 transform transition-transform duration-300 hover:scale-110">
+                    </a>
+                    <h3 class="text-2xl font-fd-souvenir mx-auto m-6">Fine Day Studio</h3>
+                    <p class="text-lg font-fd-karla text-center md:p-4">Aberdeen Pub Generator has been brought to you
+                        by the stunningly
+                        clever guys and gals at Fine Day Studio.</p>
+                    <p class="text-lg font-fd-karla text-center md:p-4">To find out more about them and their work,
+                        click the logo.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center my-10 p-4">
+                <img src="./assets/images/drink_responsibly.png" alt="image of the please drink responsibly logo"
+                    class="w-36 h-36 rounded-xl border-fd-dark border-solid border-2">
+                <h3 class="text-2xl font-fd-souvenir mx-auto m-6">Please Drink Responsibly</h3>
+                <p class="text-lg font-fd-karla text-center p-2 md:p-4">This site was created as a bit of fun to help
+                    you
+                    discover new places and enjoy good times.</p>
+                <p class="text-lg font-fd-karla text-center p-2 md:p-4">However, we kindly remind all users to
+                    <strong>always
+                        drink responsibly</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="border-t">
+
+    <footer class="">
+        <div class="grid grid-cols-3 gap-4 h-full max-w-[400px] w-full mx-auto text-sm">
+            <div class="flex flex-col justify-center items-center p-4">
+                <a href="https://fineday.studio/contact" target="_blank" rel="noopener noreferrer"
+                    class="flex flex-col justify-center items-center h-full">
+                    <i class="fa-solid fa-address-book fa-xl my-4"></i>
+                    <p>Contact</p>
+                </a>
+            </div>
+            <div class="flex flex-col justify-center items-center p-4">
+                <a href="https://www.instagram.com/fine.day.studio/" target="_blank" rel="noopener noreferrer"
+                    class="flex flex-col justify-center items-center h-full">
+                    <i class="fa-brands fa-instagram fa-xl my-4"></i>
+                    <p>Instagram</p>
+                </a>
+            </div>
+            <div class="flex flex-col justify-center items-center p-4">
+                <a href="https://www.linkedin.com/company/fine-day-studio/" target="_blank" rel="noopener noreferrer"
+                    class="flex flex-col justify-center items-center h-full">
+                    <i class="fa-brands fa-linkedin fa-xl my-4"></i>
+                    <p>LinkedIn</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <hr class="border-t">
+        <div class="text-center py-3">
+            <p class="text-sm font-fd-karla">
+                &copy; <span id="copyright-date"></span> Fine Day Studio. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+
+</html>
